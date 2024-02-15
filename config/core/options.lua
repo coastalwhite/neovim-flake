@@ -69,6 +69,7 @@ local options = {
 	-----------------------------------------
 	number = true, -- Set line numbers
 	relativenumber = true, -- Use relative numbers
+    signcolumn = 'yes', -- Always show the gutter left to the line numbers
 	-----------------------------------------
 
 	-- Search/replace options
