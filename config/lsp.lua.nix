@@ -81,7 +81,11 @@ cmp.setup.cmdline(":", {
 	}),
 })
 
-local glob_opts = { noremap = true, silent = true }
+-- Disallow from focussing the signature help windo
+vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(
+  vim.lsp.handlers.signature_help,
+  { focusable = false }
+)
 
 -- Fix the underline highlighting to not be undercurl
 vim.cmd([[ " Underline the offending code
@@ -91,14 +95,11 @@ hi DiagnosticUnderlineInformation guifg=NONE ctermfg=NONE cterm=underline gui=un
 hi DiagnosticUnderlineHint guifg=NONE ctermfg=NONE cterm=underline gui=underline
 ]])
 
-function map(mode, keys, command, opts)
-	vim.keymap.set(mode, keys, command, opts)
+function keymap(mode, keys, command, desc)
+	vim.keymap.set(mode, keys, command, { noremap = true, silent = true, desc = desc })
 end
 
 local on_attach = function(client, bufnr)
-	-- Disable formatting using the native LSP (instead use Null-LS)
-	-- client.server_capabilities.document_formatting = false
-	-- client.server_capabilities.document_range_formatting = false
 	client.server_capabilities.semanticTokensProvider = nil
 end
 
