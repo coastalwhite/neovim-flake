@@ -54,6 +54,14 @@ augroup('_restore_view', { clear = true })
 autocmd('BufWinLeave', { group = '_restore_view', command = 'silent! mkview'   })
 autocmd('BufWinEnter', { group = '_restore_view', command = 'silent! loadview' })
 
+-- Disabled color column within oil.nvim
+autocmd('FileType', {
+    pattern = 'oil',
+    callback = function()
+        vim.opt_local.colorcolumn = ''
+    end,
+})
+
 -- Quick Fix Window
 augroup('_quickfix', { clear = true })
 autocmd('FileType', {
