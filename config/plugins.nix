@@ -6,6 +6,8 @@ with pkgs.vimPlugins; [
 	vim-surround      # Changing surrounding quotes, brackets or tags
     vim-fugitive      # Git Integration
 
+    typst-vim         # Syntax Highlighting for Typst
+
 	mini-nvim         # Colorscheme
 	nvim-notify       # Show notifications in the top right
     gitsigns-nvim     # Bar git status
