@@ -5,6 +5,7 @@ with pkgs.vimPlugins; [
 	vim-repeat        # Repeat with the dot command for other plugins
 	vim-surround      # Changing surrounding quotes, brackets or tags
     vim-fugitive      # Git Integration
+    align-nvim        # Alignment
 
     typst-vim         # Syntax Highlighting for Typst
 

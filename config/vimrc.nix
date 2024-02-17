@@ -10,6 +10,7 @@ let
         ./core/keymaps.lua
         ./core/autocommands.lua
         ./core/abbreviations.lua
+        ./plugin/align-nvim.lua
         ./plugin/comment-nvim.lua
         ./plugin/gitsigns-nvim.lua
         ./plugin/mini-nvim.lua

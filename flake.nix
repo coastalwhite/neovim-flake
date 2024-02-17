@@ -6,12 +6,22 @@
 		  url = "github:neovim/neovim/stable?dir=contrib";
 		  inputs.nixpkgs.follows = "nixpkgs";
 	  };
+	  align-nvim-src = {
+		  url = "github:Vonr/align.nvim";
+		  flake = false;
+	  };
   };
-  outputs = { self, nixpkgs, neovim }: 
+  outputs = { self, nixpkgs, neovim, align-nvim-src }: 
   let 
     system = "x86_64-linux";
 	overlayFlakeInputs = prev: final: {
 		neovim = neovim.packages.${system}.neovim;
+		vimPlugins = final.vimPlugins // {
+			align-nvim = import ./vimPlugins/align-nvim.nix {
+            src = align-nvim-src;
+            pkgs = prev;
+          };
+        };
 	};
 
 	overlayMyNeovim = prev: final: {
