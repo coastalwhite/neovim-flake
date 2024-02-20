@@ -1,5 +1,7 @@
 { pkgs }:
 with pkgs.vimPlugins; [
+    vim-rooter        # Move to project-level folder upon opening
+
     comment-nvim      # Comment out lines
 
 	vim-repeat        # Repeat with the dot command for other plugins
