@@ -115,7 +115,9 @@ lspconfig.marksman.setup {
 
 -- rust_analyzer (https://rust-analyzer.github.io/)
 lspconfig.rust_analyzer.setup({
-	cmd = { "${pkgs.rust-analyzer}/bin/rust-analyzer" },
+	-- This allows us to use the default rust-analyzer when available, which
+	-- prevents problems with incremental compilation
+	cmd = { "/bin/sh", "-c", "`rustup which rust-analyzer` || ${pkgs.rust-analyzer}/bin/rust-analyzer" },
 	on_attach = on_attach,
 	settings = {
 		["rust-analyzer"] = {
