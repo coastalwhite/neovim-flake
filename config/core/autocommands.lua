@@ -2,17 +2,15 @@ local augroup = vim.api.nvim_create_augroup
 local autocmd = vim.api.nvim_create_autocmd
 
 -- Automatically turn on spell check and wrap for text files
-local text_pattern = { 'markdown', 'text', 'plaintex', 'gitcommit' }
-augroup('_text', { clear = true })
-autocmd('BufReadPost', {
-    group = '_text', 
-    pattern = text_pattern,
-    command = 'silent! setlocal spell',
-})
-autocmd('BufReadPost', {
-    group = '_text', 
-    pattern = text_pattern,
-    command = 'silent! setlocal wrap',
+autocmd('FileType', {
+    pattern = { 'markdown', 'typst', 'text', 'plaintex', 'gitcommit' },
+    callback = function()
+        vim.opt_local.spell = true
+        vim.opt_local.wrap = true
+
+        vim.opt_local.textwidth = 0
+        vim.opt_local.colorcolumn = ''
+    end
 })
 
 -- Automatically reload the buffer when it is changed from the outside
