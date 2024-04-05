@@ -60,6 +60,15 @@ autocmd('FileType', {
     end,
 })
 
+-- 2 space tabs in nix files
+autocmd('FileType', {
+    pattern = 'nix',
+    callback = function()
+        vim.opt_local.shiftwidth = 2;
+        vim.opt_local.tabstop    = 2;
+    end,
+})
+
 -- Quick Fix Window
 augroup('_quickfix', { clear = true })
 autocmd('FileType', {
