@@ -47,7 +47,9 @@ keymap('n', '<Leader>ss', ':setlocal spell!<CR>', 'Toggle spell checker')
 keymap('n', '<Leader>hl', ':nohl<CR>', 'Remove all highlight')
 
 -- Toggle show tabs and trailing spaces
-keymap('n', '<Leader>c', ':set nolist!<CR>', 'Toggle display of tabs and trailing spaces')
+keymap('n', '<Leader>c', function()
+    vim.o.list = not vim.o.list
+end, 'Toggle display of tabs and trailing spaces')
 
 -- Turn off arrow-keys for movement
 -----------------------------------------
