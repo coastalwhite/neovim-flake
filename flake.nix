@@ -6,12 +6,16 @@
 		  url = "github:neovim/neovim/stable?dir=contrib";
 		  inputs.nixpkgs.follows = "nixpkgs";
 	  };
+    rust-overlay = {
+      url = "github:oxalica/rust-overlay";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 	  align-nvim-src = {
 	    url = "github:Vonr/align.nvim";
 		  flake = false;
 	  };
   };
-  outputs = { self, nixpkgs, neovim, align-nvim-src }: 
+  outputs = { self, nixpkgs, neovim, rust-overlay, align-nvim-src }: 
   let 
     system = "x86_64-linux";
     overlayFlakeInputs = prev: final: {
@@ -51,7 +55,11 @@
 
     pkgs = import nixpkgs {
       inherit system;
-      overlays = [ overlayFlakeInputs overlayMyNeovim ];
+      overlays = [
+        rust-overlay.overlays.default
+        overlayFlakeInputs
+        overlayMyNeovim
+      ];
     };
   in {
 	  packages.${system}.default = pkgs.myNeovim;
