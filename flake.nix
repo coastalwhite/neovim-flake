@@ -26,6 +26,7 @@
           pkgs = prev;
         };
       };
+			rust-analyzer-wrap = (import ./rust-analyzer { pkgs = prev; });
     };
 
     overlayMyNeovim = prev: final: {
@@ -36,6 +37,7 @@
           name = "runtimeDependencies";
           paths = with pkgs; [
             xclip
+            (import ./rust-analyzer { inherit pkgs; })
           ];
         };
         wrappedNeovim = pkgs.wrapNeovim pkgs.neovim {

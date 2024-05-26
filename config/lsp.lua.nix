@@ -1,8 +1,5 @@
 # vim: ft=lua
 { pkgs }:
-let
-  rust-bin = pkgs.rust-bin.stable.latest;
-in
 ''
 local has_words_before = function()
 	local line, col = unpack(vim.api.nvim_win_get_cursor(0))
@@ -120,7 +117,7 @@ lspconfig.marksman.setup {
 lspconfig.rust_analyzer.setup({
   -- This allows us to use the environment supplied rust-analyzer when
   -- available, which prevents problems with incremental compilation.
-	cmd = { "/bin/sh", "-c", "rust-analyzer || ${rust-bin.rust-analyzer}/bin/rust-analyzer" },
+	cmd = { "${pkgs.rust-analyzer-wrap}/bin/rust-analyzer-wrap" },
 	on_attach = on_attach,
 	settings = {
 		["rust-analyzer"] = {
