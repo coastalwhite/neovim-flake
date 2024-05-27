@@ -67,6 +67,7 @@ require('gitsigns').setup {
     current_line_blame_formatter_opts = {
         relative_time = false,
     },
+    show_deleted = false,
     sign_priority = 6,
     update_debounce = 100,
     status_formatter = nil, -- Use default
