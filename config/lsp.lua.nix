@@ -61,7 +61,7 @@ cmp.setup({
 	sources = cmp.config.sources({
 		{ name = "nvim_lsp" },
 		{ name = "buffer",  max_item_count = 3 },
-		{ name = "path",    max_item_count = 3 },
+		{ name = "path",    max_item_count = 5 },
 		{ name = "luasnip", max_item_count = 3 },
 	}),
 })
@@ -94,10 +94,6 @@ hi DiagnosticUnderlineWarn guifg=NONE ctermfg=NONE cterm=underline gui=underline
 hi DiagnosticUnderlineInformation guifg=NONE ctermfg=NONE cterm=underline gui=underline
 hi DiagnosticUnderlineHint guifg=NONE ctermfg=NONE cterm=underline gui=underline
 ]])
-
-function keymap(mode, keys, command, desc)
-	vim.keymap.set(mode, keys, command, { noremap = true, silent = true, desc = desc })
-end
 
 local on_attach = function(client, bufnr)
 	client.server_capabilities.semanticTokensProvider = nil
