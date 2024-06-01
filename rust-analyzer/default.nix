@@ -14,12 +14,14 @@ in pkgs.stdenv.mkDerivation {
 
   unpackPhase = "";
   patchPhase = ''
-    RUST_SRC_PATH="${rust-bin}/lib/rustlib/src/rust/library"
-    substituteAllInPlace rust-analyzer-wrap.rs
+    substituteInPlace rust-analyzer-wrap.rs \
+      --replace-fail '@rust-analyzer@' '${rust-bin}/bin/rust-analyzer' \
+      --replace-fail '@RUST_SRC_PATH@' '${rust-bin}/lib/rustlib/src/rust/library'
   '';
 
   buildPhase = ''
     mkdir -p $out/bin
+    cat rust-analyzer-wrap.rs
     ${rust-bin}/bin/rustc rust-analyzer-wrap.rs -o $out/bin/rust-analyzer-wrap
   '';
 }
