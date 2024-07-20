@@ -110,3 +110,8 @@ keymap('n', '<Leader>gs', ':Git<CR>',           'Git status')
 keymap('n', '<Leader>gm', ':Git mergetool<CR>', 'Git mergetool')
 -----------------------------------------
 
+-- Quick-Fix List
+keymap('n', '<Leader>co', ':copen<CR>',  'Quick-Fix Open')
+keymap('n', '<Leader>cc', ':cclose<CR>', 'Quick-Fix Close')
+keymap('n', '<Leader>cn', ':cnext<CR>',  'Quick-Fix Next')
+keymap('n', '<Leader>cp', ':cprev<CR>',  'Quick-Fix Previous')
