@@ -106,7 +106,7 @@ local lspconfig = require("lspconfig")
 
 -- Marksman (https://github.com/artempyanykh/marksman)
 lspconfig.marksman.setup {
-    cmd = { "${pkgs.marksman}/bin/marksman" },
+  cmd = { "${pkgs.marksman}/bin/marksman" },
 }
 
 -- rust_analyzer (https://rust-analyzer.github.io/)
@@ -138,7 +138,7 @@ lspconfig.rust_analyzer.setup({
 
 -- texlab (https://texlab.netlify.app/)
 lspconfig.texlab.setup({
-    cmd = { "${pkgs.texlab}/bin/texlab" },
+  cmd = { "${pkgs.texlab}/bin/texlab" },
 	on_attach = on_attach,
 	flags = flags,
 	capabilities = capabilities,
@@ -150,7 +150,7 @@ for j, x in ipairs(capabilities) do
 	clangd_capabilities[j] = x
 end
 lspconfig.clangd.setup({
-    cmd = { "${pkgs.libclang}/bin/clangd" },
+  cmd = { "${pkgs.libclang}/bin/clangd" },
 	on_attach = on_attach,
 	flags = flags,
 	capabilities = clangd_capabilities,
@@ -158,21 +158,21 @@ lspconfig.clangd.setup({
 
 -- pyright (https://github.com/microsoft/pyright)
 lspconfig.pyright.setup({
-    cmd = { "${pkgs.nodePackages.pyright}/bin/pyright" },
+  cmd = { "${pkgs.nodePackages.pyright}/bin/pyright-langserver", "--stdio" },
 	on_attach = on_attach,
 	flags = flags,
 	capabilities = capabilities,
 })
 
 lspconfig.nil_ls.setup({
-    cmd = { "${pkgs.nil}/bin/nil" },
+  cmd = { "${pkgs.nil}/bin/nil" },
 	on_attach = on_attach,
 	flags = flags,
 	capabilities = capabilities,
 })
 
 lspconfig.typst_lsp.setup({
-    cmd = { "${pkgs.typst-lsp}/bin/typst-lsp" },
+  cmd = { "${pkgs.typst-lsp}/bin/typst-lsp" },
 	on_attach = on_attach,
 	flags = flags,
 	capabilities = capabilities,
@@ -186,7 +186,7 @@ lspconfig.typst_lsp.setup({
 })
 
 lspconfig.denols.setup({
-    cmd = { "${pkgs.deno}/bin/deno", "lsp" },
+  cmd = { "${pkgs.deno}/bin/deno", "lsp" },
 	on_attach = on_attach,
 	flags = flags,
 	capabilities = capabilities,
