@@ -125,6 +125,8 @@ lspconfig.rust_analyzer.setup({
 				buildScripts = {
 					enable = true,
 				},
+        targetDir = true,
+        features = "all",
 				loadOutDirsFromCheck = true,
 			},
 			procMacro = {
