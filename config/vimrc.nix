@@ -21,6 +21,7 @@ let
         ./plugin/which-key-nvim.lua
         ./plugin/dressing-nvim.lua
         (createFile ./lsp.lua.nix "lsp.lua")
+        (createFile ./nvim-dap.lua.nix "nvim-dap.lua")
     ];
 	sourceLines = builtins.map (f: "luafile ${f}") configs;
 	vimRC = concatLines sourceLines;
