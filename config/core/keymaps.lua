@@ -119,9 +119,10 @@ keymap('n', '<Leader>cp', ':cprev<CR>',  'Quick-Fix Previous')
 -- NVIM-DAP
 local dap = require('dap')
 keymap('n', '<Leader>do', dap.repl.open,         'Open REPL')
-keymap('n', '<Leader>db', dap.toggle_breakpoint, 'Toggle Breakpoint')
 keymap("n", "<Leader>dt", dap.terminate,         'Terminate Debug Session')
-keymap("n", "<Leader>dm", dap.run_to_cursor,     'Run to Cursor')
+
+-- Break points
+keymap('n', '<Leader>db', dap.toggle_breakpoint, 'Toggle Breakpoint')
 keymap("n", "<Leader>dB", function()
 	vim.ui.input({ prompt = 'Breakpoint condition' }, function(expr)
         require'dap'.set_breakpoint(expr)
@@ -132,16 +133,22 @@ keymap("n", "<Leader>dp", function()
         require'dap'.set_breakpoint(nil, nil, msg .. '\n')
     end)
 end, 'Set Breakpoint at Log message')
+keymap("n", "<Leader>dc", dap.clear_breakpoints, 'Clear all breakpoints')
+
+-- Evaluate state
 keymap({'n', 'v'}, '<Leader>dK', function()
   require('dap.ui.widgets').hover()
 end, 'Debugger Hover')
-
 keymap('n', '<Leader>de', function()
 	vim.ui.input({ prompt = 'Expression' }, function(expr)
         require("dapui").eval(expr)
     end)
 end, 'Debugger Evaluate Expression')
 
+keymap("n", "<Leader>dm", dap.run_to_cursor, 'Run to Cursor')
+keymap("n", "<Leader>dP", dap.pause          'Pause the Debugger')
+
+-- Flow control
 keymap("n", "<F9>", dap.continue,   'Debugger Continue')
 keymap("n", "<F10>", dap.step_into, 'Debugger Step Into')
 keymap("n", "<F11>", dap.step_over, 'Debugger Step Over')

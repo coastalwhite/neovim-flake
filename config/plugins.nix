@@ -1,6 +1,6 @@
 { pkgs }:
 with pkgs.vimPlugins; [
-  vim-rooter        # Move to project-level folder upon opening
+  nvim-rooter-lua   # Move to project-level folder upon opening
   
   comment-nvim      # Comment out lines
 

@@ -14,8 +14,12 @@
 	    url = "github:Vonr/align.nvim";
 		  flake = false;
 	  };
+	  nvim-rooter-src = {
+	    url = "github:notjedi/nvim-rooter.lua";
+		  flake = false;
+	  };
   };
-  outputs = { self, nixpkgs, neovim, rust-overlay, align-nvim-src }: 
+  outputs = { self, nixpkgs, neovim, rust-overlay, align-nvim-src, nvim-rooter-src }: 
   let 
     system = "x86_64-linux";
     overlayFlakeInputs = prev: final: {
@@ -23,6 +27,10 @@
       vimPlugins = final.vimPlugins // {
         align-nvim = import ./vimPlugins/align-nvim.nix {
           src = align-nvim-src;
+          pkgs = prev;
+        };
+        nvim-rooter-lua = import ./vimPlugins/nvim-rooter.nix {
+          src = nvim-rooter-src;
           pkgs = prev;
         };
       };
