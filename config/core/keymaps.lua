@@ -146,7 +146,7 @@ keymap('n', '<Leader>de', function()
 end, 'Debugger Evaluate Expression')
 
 keymap("n", "<Leader>dm", dap.run_to_cursor, 'Run to Cursor')
-keymap("n", "<Leader>dP", dap.pause          'Pause the Debugger')
+keymap("n", "<Leader>dP", dap.pause,         'Pause the Debugger')
 
 -- Flow control
 keymap("n", "<F9>", dap.continue,   'Debugger Continue')

@@ -160,7 +160,7 @@ lspconfig.clangd.setup({
 
 -- pyright (https://github.com/microsoft/pyright)
 lspconfig.pyright.setup({
-  cmd = { "${pkgs.nodePackages.pyright}/bin/pyright-langserver", "--stdio" },
+  cmd = { "${pkgs.pyright}/bin/pyright-langserver", "--stdio" },
 	on_attach = on_attach,
 	flags = flags,
 	capabilities = capabilities,
@@ -173,18 +173,11 @@ lspconfig.nil_ls.setup({
 	capabilities = capabilities,
 })
 
-lspconfig.typst_lsp.setup({
-  cmd = { "${pkgs.typst-lsp}/bin/typst-lsp" },
+lspconfig.tinymist.setup({
+  cmd = { "${pkgs.tinymist}/bin/tinymist" },
 	on_attach = on_attach,
 	flags = flags,
 	capabilities = capabilities,
-	settings = {
-		exportPdf = "never",
-	},
-	root_dir = function(fname)
-		return require('lspconfig.util').root_pattern('typst.toml', '.git')(fname)
-			or vim.fn.getcwd()
-	end,
 })
 
 lspconfig.denols.setup({
