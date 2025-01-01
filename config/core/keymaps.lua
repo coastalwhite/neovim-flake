@@ -142,10 +142,13 @@ keymap('n', '<Leader>ds', function()
   local widgets = require('dap.ui.widgets')
   widgets.centered_float(widgets.scopes)
 end, 'Debugger Scopes')
+
+
 keymap('n', '<Leader>de', function()
-  local widgets = require('dap.ui.widgets')
-  widgets.centered_float(widgets.expression)
-end, 'Debugger Expression')
+	vim.ui.input({ prompt = 'Expression' }, function(expr)
+        require("dapui").eval(expr)
+    end)
+end, 'Debugger Evaluate Expression')
 
 keymap("n", "<F9>", dap.continue,   'Debugger Continue')
 keymap("n", "<F10>", dap.step_into, 'Debugger Step Into')

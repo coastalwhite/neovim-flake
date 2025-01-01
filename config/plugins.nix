@@ -30,5 +30,6 @@ with pkgs.vimPlugins; [
   cmp_luasnip       # for autocompletion
   friendly-snippets # useful snippets
 
-  nvim-dap
+  nvim-dap          # Debug Adapter
+  nvim-dap-ui       # UI for Debug Adapter
 ]
