@@ -6,24 +6,16 @@
       url = "github:oxalica/rust-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-	  align-nvim-src = {
-	    url = "github:Vonr/align.nvim";
-		  flake = false;
-	  };
 	  nvim-rooter-src = {
 	    url = "github:notjedi/nvim-rooter.lua";
 		  flake = false;
 	  };
   };
-  outputs = { self, nixpkgs, rust-overlay, align-nvim-src, nvim-rooter-src }: 
+  outputs = { self, nixpkgs, rust-overlay, nvim-rooter-src }: 
   let 
     system = "x86_64-linux";
     overlayFlakeInputs = prev: final: {
       vimPlugins = final.vimPlugins // {
-        align-nvim = import ./vimPlugins/align-nvim.nix {
-          src = align-nvim-src;
-          pkgs = prev;
-        };
         nvim-rooter-lua = import ./vimPlugins/nvim-rooter.nix {
           src = nvim-rooter-src;
           pkgs = prev;

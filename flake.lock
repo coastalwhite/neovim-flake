@@ -1,21 +1,5 @@
 {
   "nodes": {
-    "align-nvim-src": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1697853779,
-        "narHash": "sha256-99eymRrNjqzdvc1nWe/zTqzKxlAWGCYEOmeuRjmZTSM=",
-        "owner": "Vonr",
-        "repo": "align.nvim",
-        "rev": "6840ba092b7994d1e8330c98d4b838b1f490cf39",
-        "type": "github"
-      },
-      "original": {
-        "owner": "Vonr",
-        "repo": "align.nvim",
-        "type": "github"
-      }
-    },
     "flake-utils": {
       "inputs": {
         "systems": "systems"
@@ -67,7 +51,6 @@
     },
     "root": {
       "inputs": {
-        "align-nvim-src": "align-nvim-src",
         "nixpkgs": "nixpkgs",
         "nvim-rooter-src": "nvim-rooter-src",
         "rust-overlay": "rust-overlay"
