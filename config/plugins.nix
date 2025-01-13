@@ -29,7 +29,4 @@ with pkgs.vimPlugins; [
   luasnip           # snippet engine
   cmp_luasnip       # for autocompletion
   friendly-snippets # useful snippets
-
-  nvim-dap          # Debug Adapter
-  nvim-dap-ui       # UI for Debug Adapter
 ]
